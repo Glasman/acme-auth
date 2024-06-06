@@ -4,18 +4,18 @@ import { fileURLToPath } from 'url';
 
 const app = express();
 
-
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+app.use(express.json())
 app.use('/assets', express.static(__dirname + '/dist/assets'))
 
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/dist/index.html')
 })
 
-app.get('/login', (req, res) => {
-    console.log('logging in')
+app.post('/login', (req, res) => {
+    console.log(req.body)
     res.send({value: 'logging on'})
 })
 

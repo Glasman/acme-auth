@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./App.css";
+import axios from "axios";
 
 const App = () => {
   const [username, setUsername] = useState("");
@@ -8,7 +9,28 @@ const App = () => {
   const logIn = async(event) => {
     event.preventDefault();
     try {
-      const response = await fetch('/login')
+      //de-axios'd post request
+
+      // const response = await fetch('/login', {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json'
+      //   },
+      //   body: JSON.stringify({
+      //     username,
+      //     password
+      //   })
+      // });
+      
+      // const data = await response.json();
+  
+//axios request
+
+    const response = await axios.post('/login', {
+      username,
+      password
+    })
+
       const responseJson = await response.json()
       console.log(responseJson)
     } catch (error) {

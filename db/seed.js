@@ -37,7 +37,9 @@ const syncAndSeed = async () => {
     await createUser('curly', 'curly');
     await createUser('larry', 'larry');
     await createUser('moe', 'moe');
+    await createUser('mark', 'mark');
     console.log('bros created')
+    client.end();
   } catch (error) {
     console.log(error);
   }
