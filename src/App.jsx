@@ -11,27 +11,28 @@ const App = () => {
     try {
       //de-axios'd post request
 
-      // const response = await fetch('/login', {
-      //   method: 'POST',
-      //   headers: {
-      //     'Content-Type': 'application/json'
-      //   },
-      //   body: JSON.stringify({
-      //     username,
-      //     password
-      //   })
-      // });
+      const response = await fetch('/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          username,
+          password
+        })
+      });
       
-      // const data = await response.json();
+      const responseJson = await response.json();
   
 //axios request
 
-    const response = await axios.post('/login', {
-      username,
-      password
-    })
+    // const response = await axios.post('/login', {
+    //   username,
+    //   password
+    // })
 
-      const responseJson = await response.json()
+      // const responseJson = await response.json()
+      
       console.log(responseJson)
     } catch (error) {
       console.log(error)
