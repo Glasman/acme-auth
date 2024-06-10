@@ -7,7 +7,10 @@ const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+
+//this middleware is needed because it parses json data in a request body and makes it available under the req.body property
 app.use(express.json())
+
 app.use('/assets', express.static(__dirname + '/dist/assets'))
 
 app.get('/', (req, res) => {
