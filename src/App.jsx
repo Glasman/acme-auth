@@ -17,8 +17,8 @@ const App = () => {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          username,
-          password
+          username: username,
+          password: password
         })
       });
       
@@ -32,7 +32,7 @@ const App = () => {
     // })
 
       // const responseJson = await response.json()
-      
+
       console.log(responseJson)
     } catch (error) {
       console.log(error)
