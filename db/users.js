@@ -11,11 +11,13 @@ const createUser = async (username, password) => {
   }
 };
 
-const getUser = async() => {
+const getUser = async(username, password) => {
   try {
-    await client.query(`
-    SELECT * FROM users
-    WHERE username='${username}' AND password='${password}';`)
+    const { rows: [ user ] } = await client.query(`
+    SELECT username FROM users
+    WHERE username='${username}' AND password='${password}';
+    `);
+    return user;
   } catch (error) {
     console.log(error)
   }

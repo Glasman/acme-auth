@@ -32,7 +32,9 @@ const App = () => {
       // })
 
       // const responseJson = await response.json()
-      console.log(response);
+
+      // console.log(response);
+
       console.log(responseJson);
     } catch (error) {
       console.log(error);

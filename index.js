@@ -1,26 +1,29 @@
-import express from 'express';
-import path from 'path';
-import { fileURLToPath } from 'url';
+import express from "express";
+import path from "path";
+import { fileURLToPath } from "url";
+import { getUser } from "./db/users.js";
 
+import client from "./db/client.js";
+client.connect();
 const app = express();
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-
 //this middleware is needed because it parses json data in a request body and makes it available under the req.body property
-app.use(express.json())
+app.use(express.json());
 
-app.use('/assets', express.static(__dirname + '/dist/assets'))
+app.use("/assets", express.static(__dirname + "/dist/assets"));
 
-app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/dist/index.html')
-})
+app.get("/", (req, res) => {
+  res.sendFile(__dirname + "/dist/index.html");
+});
 
-app.post('/login', (req, res) => {
-    console.log(req.body)
-    res.send({value: 'logging on'})
-})
+app.post("/login", async (req, res) => {
+  const { username, password } = req.body;
+  const user = await getUser(username, password);
+  res.send(user);
+});
 
 const PORT = 3000;
-app.listen(PORT, () => console.log(`listening on port ${PORT}`))
+app.listen(PORT, () => console.log(`listening on port ${PORT}`));
