@@ -6,36 +6,36 @@ const App = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const logIn = async(event) => {
+  const logIn = async (event) => {
     event.preventDefault();
     try {
       //de-axios'd post request
 
-      const response = await fetch('/login', {
-        method: 'POST',
+      const response = await fetch("/login", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           username: username,
-          password: password
-        })
+          password: password,
+        }),
       });
-      
-      const responseJson = await response.json();
-  
-//axios request
 
-    // const response = await axios.post('/login', {
-    //   username,
-    //   password
-    // })
+      const responseJson = await response.json();
+
+      //axios request
+
+      // const response = await axios.post('/login', {
+      //   username,
+      //   password
+      // })
 
       // const responseJson = await response.json()
-
-      console.log(responseJson)
+      console.log(response);
+      console.log(responseJson);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   };
 
