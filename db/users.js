@@ -1,4 +1,6 @@
 import client from "./client.js";
+import { jwt } from "jsonwebtoken";
+
 
 const createUser = async (username, password) => {
   try {
