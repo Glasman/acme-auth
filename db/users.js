@@ -1,7 +1,6 @@
 import client from "./client.js";
 import { jwt } from "jsonwebtoken";
 
-
 const createUser = async (username, password) => {
   try {
     await client.query(`
@@ -13,21 +12,28 @@ const createUser = async (username, password) => {
   }
 };
 
-const getUser = async(username, password) => {
+const getUser = async (username, password) => {
   try {
-    const { rows: [ user ] } = await client.query(`
+    const {
+      rows: [user],
+    } = await client.query(`
     SELECT username FROM users
     WHERE username='${username}' AND password='${password}';
     `);
 
-    if(user) {
-      const assignedToken = jwt.sign({ username: user.username }, 'secret');
-      return assignedToken
+    if (user) {
+      const assignedToken = jwt.sign({ username: user.username }, "secret");
+      return assignedToken;
+    } else {
+      const error = new Error("bad credentials");
+      error.status = 401;
+      throw error;
     }
-    return user;
-  } catch (error) {
-    console.log(error)
+  } catch (err) {
+    const error = new Error("bad credentials");
+    error.status = 401;
+    throw error;
   }
-}
+};
 
 export { createUser, getUser };

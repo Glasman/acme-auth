@@ -19,11 +19,17 @@ app.get("/", (req, res) => {
   res.sendFile(__dirname + "/dist/index.html");
 });
 
-app.post("/login", async (req, res) => {
-  const { username, password } = req.body;
-  const user = await getUser(username, password);
-  res.send(user);
+app.post("/login", async (req, res, next) => {
+  try {
+    const { username, password } = req.body;
+    const user = await getUser(username, password);
+    res.send(user);
+  } catch (err) {
+    next(err);
+  } 
 });
+
+
 
 const PORT = 3000;
 app.listen(PORT, () => console.log(`listening on port ${PORT}`));
