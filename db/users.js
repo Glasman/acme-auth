@@ -21,7 +21,8 @@ const getUser = async(username, password) => {
     `);
 
     if(user) {
-      
+      const assignedToken = jwt.sign({ username: user.username }, 'secret');
+      return assignedToken
     }
     return user;
   } catch (error) {
