@@ -1,5 +1,9 @@
-import client from "./client.js";
-import { jwt } from "jsonwebtoken";
+// import client from "./client.js";
+// import pkg from 'jsonwebtoken';
+// const { jwt } = pkg;
+import jwt from 'jsonwebtoken';
+import client  from './client.js'; // Adjust the path as necessary
+
 
 const createUser = async (username, password) => {
   try {
@@ -30,9 +34,10 @@ const getUser = async (username, password) => {
       throw error;
     }
   } catch (err) {
-    const error = new Error("bad credentials");
-    error.status = 401;
-    throw error;
+    // const error = new Error("bad credentials");
+    // error.status = 401;
+    // throw error;
+    throw err;
   }
 };
 

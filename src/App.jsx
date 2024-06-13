@@ -34,7 +34,7 @@ const App = () => {
       console.log(response)
       // const responseJson = await response.json();
       // console.log(responseJson);
-      setAuth(await response.json())
+      // setAuth(await response.json())
 
     } catch (error) {
       console.log(error);
