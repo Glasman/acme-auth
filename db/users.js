@@ -19,6 +19,10 @@ const getUser = async(username, password) => {
     SELECT username FROM users
     WHERE username='${username}' AND password='${password}';
     `);
+
+    if(user) {
+      
+    }
     return user;
   } catch (error) {
     console.log(error)
