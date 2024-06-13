@@ -22,14 +22,17 @@ app.get("/", (req, res) => {
 app.post("/login", async (req, res, next) => {
   try {
     const { username, password } = req.body;
-    const user = await getUser(username, password);
-    res.send(user);
+    const token = await getUser(username, password);
+    res.send({ token });
   } catch (err) {
     next(err);
   } 
 });
 
-
+app.use((err, req, res) => {
+    console.log(err);
+    res.status(401).send({ error: err.message})
+})
 
 const PORT = 3000;
 app.listen(PORT, () => console.log(`listening on port ${PORT}`));
