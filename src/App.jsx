@@ -43,7 +43,7 @@ const App = () => {
 
   return (
     <>
-      <h1>Acme Auth</h1>
+      <h2>Acme Auth</h2>
 
       {auth.username ? (
         <>
