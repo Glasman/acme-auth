@@ -21,7 +21,6 @@ const App = () => {
 
       //de-axios'd post request
 
-      
       const response = await fetch("/login", {
         method: "POST",
         headers: {
