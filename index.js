@@ -24,7 +24,9 @@ app.get("/", (req, res) => {
   res.sendFile(__dirname + "/dist/index.html");
 });
 
+// app.get('/login', async(req, res, next) => {
 
+// })
 
 app.post("/login", async (req, res, next) => {
   try {
@@ -37,10 +39,10 @@ app.post("/login", async (req, res, next) => {
   } 
 });
 
-// app.use((err, req, res, next) => {
-//     console.log(err);
-//     res.status(401).send({ error: err.message})
-// })
+app.use((err, req, res, next) => {
+    console.log(err);
+    res.status(401).send({ error: err.message})
+})
 
 const PORT = 3000;
 app.listen(PORT, () => console.log(`listening on port ${PORT}`));
