@@ -1,10 +1,9 @@
-// attempts at import 
+// attempts at import
 // import client from "./client.js";
 // import pkg from 'jsonwebtoken';
 // const { jwt } = pkg;
-import jwt from 'jsonwebtoken';
-import client  from './client.js'; // Adjust the path as necessary
-
+import jwt from "jsonwebtoken";
+import client from "./client.js"; // Adjust the path as necessary
 
 const createUser = async (username, password) => {
   try {
@@ -27,8 +26,11 @@ const getUser = async (username, password) => {
     `);
 
     if (user) {
-      const assignedToken = jwt.sign({ id: user.id, username: user.username }, "secret");
-      console.log(assignedToken)
+      const assignedToken = jwt.sign(
+        { id: user.id, username: user.username },
+        "secret"
+      );
+      console.log(assignedToken);
       return assignedToken;
     } else {
       const error = new Error("bad credentials");
@@ -42,13 +44,13 @@ const getUser = async (username, password) => {
   }
 };
 
-const getUserByToken = async(token) => {
+const getUserByToken = async (token) => {
   try {
-    const myToken = jwt.verify(token, "secret")
-    console.log(myToken)
+    const myToken = jwt.verify(token, "secret");
+    console.log(myToken);
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
 export { createUser, getUser, getUserByToken };
