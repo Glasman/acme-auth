@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import axios from "axios";
 
@@ -6,6 +6,10 @@ const App = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [auth, setAuth] = useState({})
+
+useEffect(() => {
+
+})
 
   const logIn = async (event) => {
     event.preventDefault();
@@ -18,8 +22,7 @@ const App = () => {
       // });
       // console.log(response)
       // localStorage.setItem('token', response.data.token)
-      // const auth = response.data;
-      // setAuth(response.data);
+   
 
       //de-axios'd post request
 
