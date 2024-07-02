@@ -26,7 +26,7 @@ app.get("/", (req, res) => {
 
 app.get('/login', async(req, res, next) => {
   console.log(req.headers)
-  res.send({ value: 'hello' })
+  res.send({ value: 'hello!' })
 })
 
 app.post("/login", async (req, res, next) => {
