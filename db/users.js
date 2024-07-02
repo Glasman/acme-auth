@@ -35,11 +35,18 @@ const getUser = async (username, password) => {
       throw error;
     }
   } catch (err) {
-    // const error = new Error("bad credentials");
-    // error.status = 401;
-    // throw error;
-    throw err;
+    const error = new Error("bad credentials");
+    error.status = 401;
+    throw error;
   }
 };
 
-export { createUser, getUser };
+const getUserByToken = async(token) => {
+  try {
+    const myToken = jwt.verify(token, "secret")
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export { createUser, getUser, getUserByToken };

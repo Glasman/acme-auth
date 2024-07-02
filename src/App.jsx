@@ -65,7 +65,6 @@ useEffect(() => {
           authorization: token
         }
       });
-      console.log(response)
     }
    }
 

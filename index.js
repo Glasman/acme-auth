@@ -1,7 +1,7 @@
 import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
-import { getUser } from "./db/users.js";
+import { createUser, getUser, getUserByToken } from "./db/users.js";
 import bodyParser from 'body-parser';
 
 import pkg from 'jsonwebtoken';
@@ -25,7 +25,7 @@ app.get("/", (req, res) => {
 });
 
 app.get('/login', async(req, res, next) => {
-  console.log(req.headers.authorization)
+  await getUserByToken(req.headers.authorization)
   res.send({ value: 'hello!' })
 })
 
