@@ -16,7 +16,9 @@ const App = () => {
       //   username,
       //   password,
       // });
-      // // const auth = response.data;
+      // console.log(response)
+      // localStorage.setItem('token', response.data.token)
+      // const auth = response.data;
       // setAuth(response.data);
 
       //de-axios'd post request
@@ -31,7 +33,18 @@ const App = () => {
           password: password,
         }),
       });
-      console.log(response)
+
+      if (!response.ok) {
+        throw new Error("Login failed");
+      }
+      const responseJson = await response.json();
+      console.log(responseJson);
+      localStorage.setItem("token", responseJson.token);
+
+      // console.log(response)
+
+      // localStorage.setItem('token', response.token.data)
+
       // const responseJson = await response.json();
       // console.log(responseJson);
       // setAuth(await response.json())
