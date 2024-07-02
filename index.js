@@ -25,7 +25,7 @@ app.get("/", (req, res) => {
 });
 
 app.get('/login', async(req, res, next) => {
-  console.log(req.headers)
+  console.log(req.headers.authorization)
   res.send({ value: 'hello!' })
 })
 
