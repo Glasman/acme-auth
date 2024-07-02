@@ -24,9 +24,10 @@ app.get("/", (req, res) => {
   res.sendFile(__dirname + "/dist/index.html");
 });
 
-// app.get('/login', async(req, res, next) => {
-
-// })
+app.get('/login', async(req, res, next) => {
+  console.log(req.headers)
+  res.send({ value: 'hello' })
+})
 
 app.post("/login", async (req, res, next) => {
   try {
