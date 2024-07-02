@@ -8,7 +8,7 @@ const App = () => {
   const [auth, setAuth] = useState({})
 
 useEffect(() => {
-
+  attemptLoginWithToken()
 })
 
   const logIn = async (event) => {
@@ -56,6 +56,19 @@ useEffect(() => {
       console.log(error);
     }
   };
+
+   const attemptLoginWithToken = async() => {
+    const token = localStorage.getItem("token");
+    if(token) {
+      const response = await axios.get('/login', {
+        headers: {
+          authorization: token
+        }
+      });
+      console.log(response)
+    }
+   }
+
 
   return (
     <>
