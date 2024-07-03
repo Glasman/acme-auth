@@ -52,7 +52,7 @@ const { rows: [user] } = await client.query(`
   SELECT id, username FROM users
   WHERE id='${myToken.id}'
   `);
-  console.log(user)
+  return user;
   } catch (error) {
     console.log(error);
   }

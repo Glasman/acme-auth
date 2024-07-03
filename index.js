@@ -25,8 +25,8 @@ app.get("/", (req, res) => {
 });
 
 app.get('/login', async(req, res, next) => {
-  await getUserByToken(req.headers.authorization)
-  res.send({ value: 'hello!' })
+  const user = await getUserByToken(req.headers.authorization)
+  res.send(user)
 })
 
 app.post("/login", async (req, res, next) => {
