@@ -48,11 +48,11 @@ const getUserByToken = async (token) => {
   try {
     const myToken = jwt.verify(token, "secret");
     // console.log(myToken);
-const { rows } = await client.query(`
+const { rows: [user] } = await client.query(`
   SELECT id, username FROM users
   WHERE id='${myToken.id}'
   `);
-  console.log(rows)
+  console.log(user)
   } catch (error) {
     console.log(error);
   }
