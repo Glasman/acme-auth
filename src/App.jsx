@@ -9,7 +9,7 @@ const App = () => {
 
 useEffect(() => {
   attemptLoginWithToken()
-})
+}, [])
 
   const logIn = async (event) => {
     event.preventDefault();
