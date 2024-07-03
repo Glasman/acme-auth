@@ -47,7 +47,11 @@ const getUser = async (username, password) => {
 const getUserByToken = async (token) => {
   try {
     const myToken = jwt.verify(token, "secret");
-    console.log(myToken);
+    // console.log(myToken);
+await client.query(`
+  SELECT id, username FROM users
+  WHERE id='${myToken.id}
+  `)
   } catch (error) {
     console.log(error);
   }
