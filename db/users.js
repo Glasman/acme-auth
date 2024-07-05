@@ -1,4 +1,3 @@
-// attempts at import
 // import client from "./client.js";
 // import pkg from 'jsonwebtoken';
 // const { jwt } = pkg;
