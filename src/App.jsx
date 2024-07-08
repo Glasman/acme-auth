@@ -77,7 +77,7 @@ useEffect(() => {
       {auth.username ? (
         <>
           <h1>Welcome {auth.username}!</h1>
-          <button>Logout</button>
+          <button>Log out</button>
         </>
       ) : (
         <form onSubmit={logIn}>
@@ -93,7 +93,7 @@ useEffect(() => {
             onChange={(e) => setPassword(e.target.value)}
           />
 
-          <button>Log in</button>
+          <button>Login</button>
         </form>
       )}
     </>
