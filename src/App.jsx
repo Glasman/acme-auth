@@ -5,11 +5,11 @@ import axios from "axios";
 const App = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [auth, setAuth] = useState({})
+  const [auth, setAuth] = useState({});
 
-useEffect(() => {
-  attemptLoginWithToken()
-}, [])
+  useEffect(() => {
+    attemptLoginWithToken();
+  }, []);
 
   const logIn = async (event) => {
     event.preventDefault();
@@ -22,7 +22,6 @@ useEffect(() => {
       // });
       // console.log(response)
       // localStorage.setItem('token', response.data.token)
-   
 
       //de-axios'd post request
 
@@ -51,24 +50,22 @@ useEffect(() => {
       // const responseJson = await response.json();
       // console.log(responseJson);
       // setAuth(await response.json())
-
     } catch (error) {
       console.log(error);
     }
   };
 
-   const attemptLoginWithToken = async() => {
+  const attemptLoginWithToken = async () => {
     const token = localStorage.getItem("token");
-    if(token) {
-      const response = await axios.get('/login', {
+    if (token) {
+      const response = await axios.get("/login", {
         headers: {
-          authorization: token
-        }
+          authorization: token,
+        },
       });
-      console.log(response)
+      console.log(response);
     }
-   }
-
+  };
 
   return (
     <>
